@@ -1,0 +1,39 @@
+{%extends "prueba.html" %}
+
+{%block title%}Registrate{% endblock %}
+
+{%block content%}
+<form>
+    <div class="card-body">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Escriba su email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Contraseña</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+        </div>
+ 
+        <div class="form-group">
+            <label>Grado a estudiar</label>
+            <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">{{grado1}}</option>
+                <option>{{grado2}}</option>
+                <option>{{grado3}}</option>
+                <option>{{grado4}}</option>
+                <option>{{grado5}}</option>
+                <option>{{grado6}}</option>
+                <option>{{grado7}}</option>
+                <option>{{grado8}}</option>
+                <option>{{grado9}}</option>
+            </select>
+        </div>
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+</form>
+
+{% endblock %}
