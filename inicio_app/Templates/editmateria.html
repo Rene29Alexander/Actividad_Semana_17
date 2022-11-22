@@ -1,0 +1,32 @@
+{%extends "prueba.html" %}
+
+{%block title%}Pagina Principal{% endblock %}
+
+{%block content%}
+<div class="container">
+    <div class="row">
+        <div class="offset-3 col-6">
+            <form action="/guardarmateria/{{materia.id}}" method="post"> {% csrf_token %}
+                <div class="form-group">
+                    <label for="inputAddress">Codigo</label>
+                    <input type="text" class="form-control" name="inputcodigo" id="inputcodigo" placeholder="Ingrese el Codigo">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress2">Nombre</label>
+                    <input type="text" class="form-control" name="inputnombre" id="inputnombre" placeholder="Ingrese un nombre">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
+                    <textarea class="form-control" name="inputdescripcion" id="inputdescripcion" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Actualizar materia</button>
+                <a href="/materia/" class="btn btn-danger">Regresar</a>
+            </form>
+
+        </div>
+
+    </div>
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{%extends "prueba.html" %}
+
+{%block title%}Pagina Principal{% endblock %}
+
+{%block content%}
+<div class="container">
+    <div class="row">
+        <div class="offset-3 col-6">
+            <form action="/guardarcliente/{{alumno.id}}" method="post"> {% csrf_token %}
+                <div class="form-group">
+                    <label for="inputAddress">Nombre</label>
+                    <input type="text" class="form-control" name="inputnombre" value="{{alumno.nombre}}" id="inputnombre" placeholder="Ingrese su Nombre">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress2">Docente</label>
+                    <input type="text" class="form-control" name="inputdocente" id="inputdocente"
+                        placeholder="Ingrese su Docente" value="{{alumno.docente}}">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="inputCity">Edad</label>
+                        <input type="number" min="18" class="form-control" name="inputedad" id="inputedad" value="{{alumno.edad}}">
+                    </div>
+                    <div class="form-group col-md-10">
+                        <label for="inputZip">codigo_estudiantes</label>
+                        <input type="text" class="form-control" name="inputcodigo" id="inputcodigo" placeholder="Escriba el codigo" value="{{alumno.Codigo}}">
+                    </div>
+                </div>
+                <div class="form-group col-md-10">
+                    <label for="inputZip">seccion</label>
+                    <input type="text" class="form-control" name="inputseccion" id="inputseccion" placeholder="Escriba su direccion" value="{{alumno.seccion}}">
+                </div>
+                <button type="submit" class="btn btn-primary">Actualizar Alumno</button>
+                <a href="/clientes/" class="btn btn-danger">Regresar</a>
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

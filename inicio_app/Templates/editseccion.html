@@ -1,0 +1,35 @@
+{%extends "prueba.html" %}
+
+{%block title%}Pagina Principal{% endblock %}
+
+{%block content%}
+<div class="container">
+    <div class="row">
+        <div class="offset-3 col-6">
+            <form action="/guardarseccion/{{seccion.id}}" method="post"> {% csrf_token %}
+                <div class="form-group">
+                    <label for="inputAddress">Seccion</label>
+                    <input type="text" class="form-control" name="inputseccion" id="inputseccion" placeholder="Ingrese la seccion">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress2">Codigo</label>
+                    <input type="text" class="form-control" name="inputcodigo" id="inputcodigo" placeholder="Ingrese el codigo">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
+                    <textarea class="form-control" name="inputdescripcion" id="inputdescripcion" rows="3"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAddress2">Ubicacion</label>
+                    <input type="text" class="form-control" name="inputubicacion" id="inputubicacion" placeholder="Ingrese la ubicacion">
+                </div>
+                <button type="submit" class="btn btn-primary">Actualizar seccion</button>
+                <a href="/seccion/" class="btn btn-danger">Regresar</a>
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
