@@ -1,11 +1,59 @@
 from django.shortcuts import render, redirect
+from django.template import context
+from django.http import HttpResponse
 from .models import *
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 
 
 # Create your views here.
+
+@login_required(login_url='/')
+def index(request):
+    return render(request,'index.html')
+
+
+@login_required(login_url='/')
+def about(request):
+    return render(request,'about.html') 
+
+
+class Registro(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username','password1','password2','email','first_name','last_name']
+
+def registro(request):
+    form = Registro()
+    if request.method == 'POST':
+        form = Registro(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Usuario creado con exito')
+    return render(request,'register.html', {"form":form})     
+
+def vistalogin(request):
+    if request.method == 'POST':
+       username=request.POST.get('username')
+       password=request.POST.get('password')
+       user = authenticate(request, username=username, password=password)
+       if user is not None:
+        login(request, user)
+        return redirect('principal')
+
+    return render(request,'login.html')     
+
+def cerrarsesion(request):
+    logout(request)
+    return redirect('/')
+
+
+
 
 def menu(request):
     return render(request,'menu_principal.html',{"username":"Usuario"})
@@ -24,18 +72,7 @@ def formulario(request):
 def servicios(request):
     return render(request,'servicios.html')
 
-
-def registro(request):
-    form = UserCreationForm()
-
-    if request.method=="post":
-        form = UserCreationForm(request.post)
-        if form.is_valid():
-            form.save()
-    context = {"form":form}
-    
-
-    return render(request,'register.html', context) 
+ 
 
 def clientescrud(request):
     listaAlumno = Alumno.objects.all()

@@ -8,10 +8,12 @@ urlpatterns = [
     
     path('menu/', menu, name="principal"),
     path('about/', about,name="acercade"),
-    path('',prueba,),
+    path('prueba/',prueba,),
     path('forn/',formulario,name="form"),
     path('servicios/',servicios,name="servicio"),
     path('registro/', registro,name="registro"),
+    path('', vistalogin,name="login"),
+    path('logout/', cerrarsesion,name="cerrarsesion"),
 
 
     path('clientes/',clientescrud,name="adminclientes"),
